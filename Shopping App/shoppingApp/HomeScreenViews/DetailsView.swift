@@ -48,7 +48,7 @@ struct Counter: View {
 
 struct DetailsView: View {
     
-    @State var fruit: fruitTitle
+    @State var fruit: FruitModel
     
     var body: some View {
         VStack(alignment: .leading, spacing: 25){
@@ -60,20 +60,20 @@ struct DetailsView: View {
                 .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                 .shadow(color: .gray, radius: 5, x: 5, y: 5)
                 .overlay(
-                    Image("\(fruit.rawValue)")
+                    Image("\(fruit.image)")
                         .resizable()
                         .frame(width: 250, height: 250, alignment: .center)
                         .shadow(color: .gray, radius: 5, x: 5, y: 5)
                 )
             Spacer()
-            Text("\(fruit.rawValue) - Medium")
+            Text("\(fruit.title.rawValue)")
                 .fontWeight(.medium)
                 .font(.system(.title))
                 .padding(.horizontal)
                 .textCase(/*@START_MENU_TOKEN@*/.uppercase/*@END_MENU_TOKEN@*/)
-            Text("Each (500g - 700g)")
+            Text("\(fruit.size)")
                 .padding(.horizontal)
-            Text("Organic agriculture is intended to produce high quality, nutritious food that contributes to preventive health care and well-being. In view of this, it avoids the use of fertilizers, pesticides, animal drugs and food additives that may have adverse health effects.")
+            Text(DetailsConstants.description)
                 .font(.body)
                 .fontWeight(.regular)
                 .multilineTextAlignment(.leading)
@@ -88,13 +88,13 @@ struct DetailsView: View {
                     .font(.system(size: 40))
                     .frame(width: 50, height: 50)
                 VStack(alignment: .leading, spacing: 5){
-                    Text("Delivery Time")
-                    Text("25 - 30 Min")
+                    Text(DetailsConstants.deliveryTimeTxt)
+                    Text(DetailsConstants.deliveryTime)
                 }
             }.padding(.horizontal)
             
             HStack{
-                Text("$1.99")
+                Text("\(fruit.price)")
                     .fontWeight(.medium)
                     .font(.title)
                     .padding(.horizontal)
@@ -118,5 +118,5 @@ struct DetailsView: View {
 }
 
 #Preview {
-    DetailsView(fruit: .apple)
+    DetailsView(fruit: FruitModel(id: 1, title: .apple, image: "apple", price: "1.22", color: "1", size: "100g"))
 }

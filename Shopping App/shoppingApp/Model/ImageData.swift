@@ -13,6 +13,7 @@ struct FruitModel {
     var image: String
     var price: String
     var color: String
+    var size: String
 }
 
 enum fruitTitle: String{

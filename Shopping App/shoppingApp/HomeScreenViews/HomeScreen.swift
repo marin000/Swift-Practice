@@ -8,38 +8,48 @@
 import SwiftUI
 
 struct HomeScreen: View {
+    
+    @State var searchFruit: String = ""
+        
     var body: some View {
-        ZStack {
+        NavigationView {
             VStack(alignment: .leading, spacing: 10){
                 HStack{
-                    Image(systemName: "line.3.horizontal")
+                    NavigationLink(
+                        destination: MenuView(),
+                        label: {
+                            Image(systemName: "line.horizontal.3")
+                                .foregroundColor(.black)
+                        }
+                    )
                     Spacer()
                     Image(systemName: "cart.badge.plus")
                 }
                 .font(.system(.title3))
                 
-                Text("Hey")
+                Text(HomeConstants.title)
                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                Text("Find fresh fruits that you want")
+                Text(HomeConstants.description)
                 RoundedRectangle(cornerRadius: 15)
                     .fill(.gray.opacity(0.3))
                     .overlay(
                         HStack{
                             Image(systemName: "magnifyingglass")
-                            Text("Search fresh fruits")
+                            TextField(HomeConstants.searchTxt, text: $searchFruit)
                                 .foregroundColor(.gray)
                                 .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
                             Spacer()
                         }.padding()
                     ).frame(width: 350, height: 50, alignment: .center)
-                
-                Text("Top Selling")
+                Spacer()
+                Text(HomeConstants.topSelling)
                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                TopSellingView()
+                    .padding(.bottom, -20)
+                TopSellingView(searchFruit: $searchFruit)
                 
-                Text("Near you")
+                Text(HomeConstants.nearYou)
                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 NearYouView()
@@ -47,6 +57,7 @@ struct HomeScreen: View {
                 
             }.padding()
         }
+        .accentColor(.black)
         .navigationBarTitle("")
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
