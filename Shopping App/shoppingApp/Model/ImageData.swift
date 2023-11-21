@@ -11,7 +11,7 @@ struct FruitModel {
     var id: Int
     var title: fruitTitle
     var image: String
-    var price: String
+    var price: Double
     var color: String
     var size: String
 }

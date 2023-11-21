@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct shoppingAppApp: App {
+    
+    let cart = Cart()
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(cart)
         }
     }
 }

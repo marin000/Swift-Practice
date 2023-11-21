@@ -12,7 +12,7 @@ struct HomeScreen: View {
     @State var searchFruit: String = ""
         
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(alignment: .leading, spacing: 10){
                 HStack{
                     NavigationLink(
@@ -23,7 +23,13 @@ struct HomeScreen: View {
                         }
                     )
                     Spacer()
-                    Image(systemName: "cart.badge.plus")
+                    NavigationLink(
+                        destination: CartView(),
+                        label: {
+                            Image(systemName: "cart.badge.plus")
+                                .foregroundColor(.black)
+                        }
+                    )
                 }
                 .font(.system(.title3))
                 
@@ -65,5 +71,8 @@ struct HomeScreen: View {
 }
 
 #Preview {
-    HomeScreen()
+    NavigationView {
+        HomeScreen()
+            .environmentObject(Cart())
+    }
 }

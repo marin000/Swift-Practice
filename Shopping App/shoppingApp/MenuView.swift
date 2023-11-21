@@ -12,6 +12,7 @@ struct MenuView: View {
     var body: some View {
         List {
             NavigationLink("On Boarding", destination: OnBoardingScreenView())
+            NavigationLink("Cart", destination: CartView())
         }
         .listStyle(GroupedListStyle())
         .navigationBarTitle("Menu", displayMode: .inline)

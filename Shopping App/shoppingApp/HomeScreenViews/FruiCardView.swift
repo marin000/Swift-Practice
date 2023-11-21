@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-let images: FruitModel = FruitModel(id: 1, title: .orange, image: "orange", price: "2.45$", color: "1", size: "100g")
+let images: FruitModel = FruitModel(id: 1, title: .orange, image: "orange", price: 2.45, color: "1", size: "100g")
 
 struct FruiCardView: View {
     let fruits: FruitModel
@@ -18,7 +18,7 @@ struct FruiCardView: View {
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     .font(.system(.title3))
                     .foregroundColor(.black)
-                Text(fruits.price)
+                Text("\(fruits.price, specifier: "%.2f")$")
                     .font(.system(.title3))
                     .foregroundColor(.black.opacity(0.7))
                 Spacer()

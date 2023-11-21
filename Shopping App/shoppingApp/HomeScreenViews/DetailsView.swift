@@ -7,48 +7,14 @@
 
 import SwiftUI
 
-struct RoundedCornerShape: Shape {
-    let corners: UIRectCorner
-    let radius: CGFloat
-    
-    func path(in react: CGRect) -> Path {
-        let path = UIBezierPath(roundedRect: react, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        return Path(path.cgPath)
-    }
-}
-
-struct Counter: View {
-    @State var count = 0
-    var body: some View{
-        HStack(spacing: 25){
-            Button {
-                if count < 10 {
-                    count+=1
-                }
-            } label: {
-                Image(systemName: "plus")
-            }
-            Text("\(count)")
-                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-            Button {
-                if count != 0 {
-                    count -= 1
-                }
-            } label: {
-                Image(systemName: "minus")
-            }
-        }
-        .foregroundColor(.black)
-        .frame(width: 130, height: 50)
-        .background(Color("bgColor").opacity(0.15))
-        .cornerRadius(12)
-        .padding()
-    }
-}
-
 struct DetailsView: View {
     
+//    @ObservedObject var cart: Cart = Cart()
+    @EnvironmentObject var cart: Cart
     @State var fruit: FruitModel
+    @State private var quantity: Int = 0
+    @State private var showingAlert = false
+    @State private var navigateToCart = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 25){
@@ -94,29 +60,56 @@ struct DetailsView: View {
             }.padding(.horizontal)
             
             HStack{
-                Text("\(fruit.price)")
+                Text("$\(fruit.price, specifier: "%.2f") each")
                     .fontWeight(.medium)
                     .font(.title)
                     .padding(.horizontal)
                 Spacer()
-                Counter()
+                Counter(count: $quantity)
             }
             
-            Image("bg")
-                .resizable()
-                .frame(width: 350, height: 50, alignment: .center)
-                .cornerRadius(15)
-                .shadow(color: .gray, radius: 5, x: 5, y: 5)
-                .overlay(
-                    Text("Add to cart")
-                        .font(.system(.title3))
-                        .fontWeight(.medium)
+            Button(action: {
+                let totalPrice = Double(quantity) * fruit.price
+                let newCartItem = CartModel(fruit: fruit, quantity: quantity, totalFruitPrice: totalPrice)
+                cart.addToCart(newSelectedFruit: newCartItem)
+                showingAlert = true
+            })
+            {
+                Image("bg")
+                    .resizable()
+                    .frame(width: 350, height: 50, alignment: .center)
+                    .cornerRadius(15)
+                    .shadow(color: .gray, radius: 5, x: 5, y: 5)
+                    .overlay(
+                        Text(DetailsConstants.buttonCart)
+                            .font(.system(.title3))
+                            .fontWeight(.medium)
+                            .foregroundColor(.black)
                     )
-                .padding(.horizontal)
+                    .padding(.horizontal)
+            }
+            .disabled(quantity == 0)
+            .alert(isPresented: $showingAlert){
+                Alert(title: Text(DetailsConstants.alert),
+                      primaryButton: .default(Text(DetailsConstants.alertPrimaryButtonTxt), action: {
+                        quantity = 0
+                }),
+                      secondaryButton: .cancel(Text(DetailsConstants.alertSecondaryButtonTxt), action: {
+                        navigateToCart = true
+                        quantity = 0
+                      })
+                )
+            }
+            .navigationDestination(isPresented: $navigateToCart){
+                CartView()
+            }
         }
     }
 }
 
 #Preview {
-    DetailsView(fruit: FruitModel(id: 1, title: .apple, image: "apple", price: "1.22", color: "1", size: "100g"))
+    NavigationView {
+        DetailsView(fruit: FruitModel(id: 1, title: .orange, image: "orange", price: 2.45, color: "1", size: "100g"))
+            .environmentObject(Cart())
+    }
 }
