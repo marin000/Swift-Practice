@@ -13,27 +13,27 @@ struct TabScreen: View {
             HomeScreen()
                 .tabItem {
                     Image(systemName: "house.fill")
-                    Text("Home")
+                    Text("\(TabConstants.home)")
                 }
             MyNetworkScreen()
                 .tabItem {
                     Image(systemName: "person.2.fill")
-                    Text("MyNetwork")
+                    Text("\(TabConstants.network)")
                 }
-            Text("Post")
+            Text("\(TabConstants.post)")
                 .tabItem {
                     Image(systemName: "plus.app.fill")
-                    Text("Post")
+                    Text("\(TabConstants.post)")
                 }
-            Text("Notifications")
+            Text("\(TabConstants.notifications)")
                 .tabItem {
                     Image(systemName: "bell.badge.fill")
-                    Text("Notifications")
+                    Text("\(TabConstants.notifications)")
                 }
-            Text("Jobs")
+            Text("\(TabConstants.jobs)")
                 .tabItem {
                     Image(systemName: "briefcase.fill")
-                    Text("Jobs")
+                    Text("\(TabConstants.jobs)")
                 }
         }
     }

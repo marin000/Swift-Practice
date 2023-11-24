@@ -14,23 +14,23 @@ struct ProfileAndPostView: View {
             Divider()
             HStack{
                 Image(systemName: "square.and.pencil")
-                Text("Share a post")
+                Text("\(ProfileAndPostConstants.share)")
             }.padding(.horizontal)
             Divider()
             HStack{
                 Image(systemName: "photo")
                     .foregroundColor(.blue)
-                Text("Photo")
+                Text("\(ProfileAndPostConstants.photo)")
                 Spacer()
                 
                 Image(systemName: "video.fill")
                     .foregroundColor(.green)
-                Text("Video")
-                
+                Text("\(ProfileAndPostConstants.video)")
+
                 Spacer()
                 Image(systemName: "calendar")
                     .foregroundColor(.orange)
-                Text("Event")
+                Text("\(ProfileAndPostConstants.event)")
             }.padding(.horizontal)
         }
     }

@@ -7,19 +7,6 @@
 
 import SwiftUI
 
-struct SocialView {
-    var ids: Int
-    var image: String
-    var title: String
-}
-
-var socialView: [SocialView] = [
-    .init(ids: 0, image: "hand.thumbsup", title: "Like"),
-    .init(ids: 1, image: "text.bubble", title: "Comment"),
-    .init(ids: 2, image: "arrow.turn.up.right", title: "Share"),
-    .init(ids: 3, image: "paperplane.fill", title: "Send")
-]
-
 let samplePostData = PostData(id: 1, image: "02", title: "John Doe", followers: 5, profileImage: "1")
 
 struct PostCardView: View {
