@@ -25,7 +25,7 @@ struct TabScreen: View {
                     Image(systemName: "plus.app.fill")
                     Text("\(TabConstants.post)")
                 }
-            Text("\(TabConstants.notifications)")
+            NotificationsView()
                 .tabItem {
                     Image(systemName: "bell.badge.fill")
                     Text("\(TabConstants.notifications)")

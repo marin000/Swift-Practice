@@ -13,4 +13,5 @@ struct NotifModel {
     var profilePhoto: String
     var notifText: String
     var time: String
+    var type: String
 }

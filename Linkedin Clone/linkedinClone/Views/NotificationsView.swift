@@ -14,11 +14,11 @@ struct NotificationsView: View {
     var body: some View {
         VStack{
             SearchBar()
-            HStack{
+            HStack(alignment: .center){
                 Button(action: {
                     buttonClicked = "all"
                }) {
-                   Text("All")
+                   Text(NotificationConstants.all)
                        .padding(10)
                        .font(.system(size: 14))
                        .foregroundColor(buttonClicked == "all" ? Color.black : Color.white)
@@ -28,7 +28,7 @@ struct NotificationsView: View {
                Button(action: {
                    buttonClicked = "posts"
                }) {
-                   Text("My posts")
+                   Text(NotificationConstants.post)
                        .padding(10)
                        .font(.system(size: 14))
                        .foregroundColor(buttonClicked == "posts" ? Color.black : Color.white)
@@ -38,7 +38,7 @@ struct NotificationsView: View {
                Button(action: {
                    buttonClicked = "mentions"
                }) {
-                   Text("Mentions")
+                   Text(NotificationConstants.mentions)
                        .padding(10)
                        .font(.system(size: 14))
                        .foregroundColor(buttonClicked == "mentions" ? Color.black : Color.white)
@@ -47,6 +47,17 @@ struct NotificationsView: View {
                }
                 Spacer()
             }.padding(.horizontal)
+            
+            Rectangle()
+                .fill(.gray.opacity(0.4))
+                .frame(width: .infinity, height: 8)
+                .ignoresSafeArea(.all)
+            ScrollView(.vertical, showsIndicators: false){
+                ForEach(buttonClicked == "all" ? DataConstants.notifData : DataConstants.notifData.filter { $0.type == buttonClicked }, id: \.id) { data in
+                    NotificationCard(notifData: data)
+                    Divider()
+                }
+            }
         }
     }
 }

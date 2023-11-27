@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MyNetworkScreen: View {
-    
     var body: some View {
         VStack{
             SearchBar()

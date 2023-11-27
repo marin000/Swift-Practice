@@ -43,16 +43,16 @@ struct DataConstants {
         
     ]
     static let notifData: [NotifModel] = [
-        .init(id: 0, name: "Marry", profilePhoto: "00", notifText: "Most relatable content of the day", time: "20m"),
-        .init(id: 1, name: "John", profilePhoto: "01", notifText: "Liked your post", time: "1h"),
-        .init(id: 2, name: "Alice", profilePhoto: "02", notifText: "Started following you", time: "2h"),
-        .init(id: 3, name: "Bob", profilePhoto: "03", notifText: "Mentioned you in a comment", time: "3h"),
-        .init(id: 4, name: "Charlie", profilePhoto: "04", notifText: "Reacted to your story", time: "4h"),
-        .init(id: 5, name: "David", profilePhoto: "05", notifText: "Sent you a connection request", time: "5h"),
-        .init(id: 6, name: "Charlie", profilePhoto: "04", notifText: "Congratulated you on your work anniversary", time: "6h"),
-        .init(id: 7, name: "Marry", profilePhoto: "00", notifText: "Invited you to an event", time: "7h"),
-        .init(id: 8, name: "John", profilePhoto: "01", notifText: "Shared a post you might like", time: "8h"),
-        .init(id: 9, name: "Alice", profilePhoto: "02", notifText: "Tagged you in a photo", time: "9h"),
-        .init(id: 10, name: "David", profilePhoto: "05", notifText: "Commented on your post", time: "10h")
+        .init(id: 0, name: "Marry", profilePhoto: "00", notifText: "Most relatable content of the day", time: "20m", type: "posts"),
+        .init(id: 1, name: "John", profilePhoto: "01", notifText: "Liked your post", time: "1h", type: "posts"),
+        .init(id: 2, name: "Alice", profilePhoto: "02", notifText: "Started following you", time: "2h", type: "mentions"),
+        .init(id: 3, name: "Bob", profilePhoto: "03", notifText: "Mentioned you in a comment", time: "3h", type: "mentions"),
+        .init(id: 4, name: "Charlie", profilePhoto: "04", notifText: "Reacted to your story", time: "4h", type: "mentions"),
+        .init(id: 5, name: "David", profilePhoto: "05", notifText: "Sent you a connection request", time: "5h", type: "mentions"),
+        .init(id: 6, name: "Charlie", profilePhoto: "04", notifText: "Congratulated you on your work anniversary", time: "6h", type: "mentions"),
+        .init(id: 7, name: "Marry", profilePhoto: "00", notifText: "Invited you to an event", time: "7h", type: "posts"),
+        .init(id: 8, name: "John", profilePhoto: "01", notifText: "Shared a post you might like", time: "8h", type: "posts"),
+        .init(id: 9, name: "Alice", profilePhoto: "02", notifText: "Tagged you in a photo", time: "9h", type: "mentions"),
+        .init(id: 10, name: "David", profilePhoto: "05", notifText: "Commented on your post", time: "10h", type: "posts")
     ]
 }
