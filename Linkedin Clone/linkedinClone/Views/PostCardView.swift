@@ -26,7 +26,7 @@ struct PostCardView: View {
                 VStack(alignment: .leading){
                     Text(data.title)
                         .font(.body)
-                    Text("\(data.followers) followers")
+                    Text("\(data.followers) \(ProfileAndPostConstants.followersTxt)")
                         .font(.subheadline)
                         .foregroundColor(.gray)
                     Text("8m")
@@ -36,7 +36,7 @@ struct PostCardView: View {
                 Spacer()
                 Image(systemName: "ellipsis")
             }.padding(.horizontal)
-            Text("Looking for a new course on iOS with swift UI?")
+            Text("\(ProfileAndPostConstants.postTxt)")
             Image(data.image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)

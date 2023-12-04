@@ -22,12 +22,12 @@ struct NotificationCard: View {
                 .frame(width: 70, height: 70, alignment: .leading)
             VStack(alignment: .leading, spacing: 5){
                 HStack(alignment: .center) {
-                    Text("\(notifData.name):")
+                    Text("\(notifData.name): ")
                         .font(.body)
-                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                        .fontWeight(.bold)
+                    +
                     Text(notifData.notifText)
                         .font(.body)
-                        .lineLimit(3)
                     Spacer()
                     VStack{
                         Text("\(notifData.time)")
