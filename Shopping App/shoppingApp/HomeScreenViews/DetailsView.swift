@@ -9,7 +9,6 @@ import SwiftUI
 
 struct DetailsView: View {
     
-//    @ObservedObject var cart: Cart = Cart()
     @EnvironmentObject var cart: Cart
     @State var fruit: FruitModel
     @State private var quantity: Int = 0
